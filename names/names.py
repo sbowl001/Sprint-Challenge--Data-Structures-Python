@@ -1,5 +1,5 @@
 import time
-import itertools 
+# import itertools  
 
 start_time = time.time()
 
@@ -19,9 +19,14 @@ duplicates = []  # Return the list of duplicates in this data structure
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
 
-for name_1, name_2 in itertools.product(names_1, names_2):
-    if name_1 == name_2: 
-        duplicates.append(name_1) 
+# for name_1, name_2 in itertools.product(names_1, names_2):
+    # if name_1 == name_2: 
+    #     duplicates.append(name_1) 
+    
+
+from itertools import chain
+duplicates = list(chain.from_iterable([(val,)*min(names_1.count(val), names_2.count(val)) for val in (set(names_1) & set(names_2))]))
+
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
