@@ -52,3 +52,4 @@ class LinkedList:
             node = next 
         self.head = prev 
         
+# https://www.geeksforgeeks.org/reverse-a-linked-list/
