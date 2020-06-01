@@ -158,10 +158,30 @@ class DoublyLinkedList:
 
 class RingBuffer:
     def __init__(self, capacity):
-        pass
+        self.max_nodes = capacity
+        self.current_nodes = 0
+
+        self.dll = DoublyLinkedList()
+        self.dict = {}
 
     def append(self, item):
-        pass
+        node = self.dll.head
+        while node is not None: 
+            self.dll.add_to_tail(item)
+        else: 
+            if self.current_nodes == self.max_nodes:
+                node = self.dll.tail 
+                self.dll.remove_from_head()
+                self.current_nodes - 1
+                
+            self.dll.add_to_head(item)
+            self.current_nodes += 1 
 
     def get(self):
-        pass
+        node = self.dll.head 
+        while node is not None: 
+            if item == node.value[0]:
+                self.dll.move_to_front(node)
+                break 
+            node = node.next 
+        return self.dict[item]
