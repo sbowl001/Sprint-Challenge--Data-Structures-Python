@@ -169,6 +169,7 @@ class RingBuffer:
                 self.current_nodes = self.dll.head
             else:
                 self.current_nodes = self.current_nodes.next
+                # need it to keep going if more than one extra is added 
             self.current_nodes.value = item
         # pass 
 
@@ -176,7 +177,6 @@ class RingBuffer:
         node = self.dll.head 
         temp_list = []
         while node is not None: 
-            # self.dll.move_to_front(node)
             temp_list.append(node.value)
             node = node.next 
         return temp_list 
